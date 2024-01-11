@@ -11,6 +11,12 @@ function Categorie() {
             <DetailCategorie key={index} details={detail} titre={apiName} />
         ));
     };
+    function openModal() {
+        document.querySelector('.modal').classList.add('is-active');
+    }
+    function closeModal() {
+        document.querySelector('.modal').classList.remove('is-active');   
+    }
     return <>
         <section classNameName="section">
             <div classNameName="container">
