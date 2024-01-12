@@ -1,4 +1,10 @@
+import '@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css';
 export default function Menu() {
+    bulmaCollapsible.attach('.is-collapsible');
+    // bulmaCollapsible.attach('.is-collapsible');
+    document.addEventListener('load', function () {
+        bulmaCollapsible.attach('.is-collapsible');
+      });
     return (
         <div className="dashboard-panel is-small is-scrollable">
             <header className="dashboard-panel-header">
@@ -11,16 +17,16 @@ export default function Menu() {
                     General
                 </p>
                 <ul className="menu-list">
-                    <li><a href="/categorie">Categorie</a></li>
                     <li><a>Annonce</a></li>
                     <li>
                         <a href="#collapse" className="is-active" data-action="collapse">
                             Détails
                         </a>
                         <ul id="collapse" className="is-collapsible">
-                            <li><a>Members</a></li>
-                            <li><a>Plugins</a></li>
-                            <li><a>Add a member</a></li>
+                            <li><a href="/categorie">Categorie</a></li>
+                            <li><a href="/marque">Marque</a></li>
+                            <li><a href="/carrosserie">Carrosserie</a></li>
+                            <li><a href="/energie">Energie</a></li>
                         </ul>
                     </li>
                 </ul>

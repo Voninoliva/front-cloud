@@ -1,8 +1,14 @@
 function DetailCategorie(props) {
     const nom = `nom${props.titre}`;
-    console.log(nom + "   nom");
-    const resultat = props.details[nom];
-    console.log(resultat + "  resultat ");
+    var nomCategorie='';
+    try{
+        nomCategorie = props.details[nom].replace(/‚/g, 'é');
+    }
+    catch(error){
+        nomCategorie='';
+    }
+    const resultat = decodeURIComponent(nomCategorie);
+    // const resultat = decodeURIComponent(props.details[nom]);
     return <>
         <div className="column is-3">
             <div className="card">

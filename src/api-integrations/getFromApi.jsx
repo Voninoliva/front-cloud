@@ -22,3 +22,32 @@ export const useFetchData = (url) => {
 
   return donnees;
 };
+
+
+export const useSubmitData = () => {
+  const submitData = async (url, formData) => {
+    try {
+      const e=JSON.stringify(formData);console.log(e);
+      const response = await fetch(url, {
+        method: 'POST', // ou 'PUT' ou 'PATCH', selon votre besoin
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP : ${response.status}`);
+      }
+      // Vous pouvez traiter la réponse si nécessaire
+      const responseData = await response.json();
+      return responseData; // Retourne la réponse si besoin
+    } catch (error) {
+      throw error; // Propage l'erreur pour que le composant puisse la gérer
+    }
+  };
+
+  return submitData;
+};
+
+

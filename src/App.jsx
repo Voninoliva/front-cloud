@@ -3,15 +3,14 @@ import 'bulma/css/bulma.min.css';
 import 'bulma-dashboard/dist/bulma-dashboard.min.css';
 import 'bulma-pricingtable/dist/css/bulma-pricingtable.min.css';
 import '@creativebulma/bulma-badge/dist/bulma-badge.min.css';
-import '@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css';
+import 'bulma-carousel'
 import Menu from "./composants/Menu";
 import './assets/js/myscript.js'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import ComposantAvecImage from "./composants/ComposantAvecImage";
+import ComposantDuModele from "./composants/ComposantDuModele.jsx";
 export default function App() {
-//   useEffect(()=>{
-//     animation();
-// },[]);
+  const ip="http://172.50.4.78";
   return (<>
     <div className="dashboard is-full-height">
       <Menu></Menu>
@@ -43,8 +42,12 @@ export default function App() {
         </nav>
         <Router>
           <Routes>
-            <Route exact path="/" element={<Categorie />} />
-            <Route path="/categorie" element={<Categorie />} />
+            <Route exact path="/" element={<Categorie ip={ip} apiName="categorie"/>} />
+            <Route path="/categorie" element={<Categorie  ip={ip}  apiName="categorie"/>} />
+            <Route path="/carrosserie" element={<Categorie  ip={ip}  apiName="carrosserie"/>} />
+            <Route path="/energie" element={<Categorie  ip={ip}  apiName="energie"/>} />
+            <Route path="/marque" element={<ComposantAvecImage  ip={ip} />} />
+            <Route path="/modele/:idmarque" element={<ComposantDuModele  ip={ip} />} />
           </Routes>
         </Router>
       </div>
