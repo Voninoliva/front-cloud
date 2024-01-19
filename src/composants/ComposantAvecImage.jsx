@@ -6,21 +6,18 @@ function ComposantAvecImage({ ip }) {
   const apiName = 'marque';
   const apiUrl = `${ip}:8080/${apiName}`;
   const donnees = useFetchData(apiUrl);
-
-  // État local pour gérer la pagination
   const itemsPerPage = 8; // Nombre d'éléments par page
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [filterName, setFilterName] = useState('');
   const renderDetails = () => {
     // Calculer l'indice de début et de fin pour la page actuelle
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-
-    // Filtrer les éléments pour la page actuelle
-    const currentItems = donnees.slice(startIndex, endIndex);
-
+    const filteredData = donnees.filter((detail) =>
+      detail.nommarque.toLowerCase().includes(filterName.toLowerCase())
+    );
+    const currentItems = filteredData.slice(startIndex, endIndex);
     return currentItems.map((detail, index) => (
-      console.log(detail),
       <UnComposantAvecImage details={detail} key={index} />
     ));
   };
@@ -39,15 +36,27 @@ function ComposantAvecImage({ ip }) {
     <>
       <section className="section">
         <div className="container">
+
           <div className="buttons is-flex is-justify-content-end">
-            <button
-              className="button py-5 px-3 is-rounded add-button"
-              onClick={openModal}
-            >
-              <span className="material-symbols-outlined">add</span>
-            </button>
+            {/* Champ de saisie pour le filtre par nom */}
+            <input
+              type="text"
+              placeholder="Filtrer par nom"
+              value={filterName}
+              onChange={(e) => setFilterName(e.target.value)}
+              className="input"
+            />
           </div>
         </div>
+        <div className="buttons is-flex is-justify-content-end">
+          <button
+            className="button py-5 px-3 is-rounded add-button"
+            onClick={openModal}
+          >
+            <span className="material-symbols-outlined">add</span>
+          </button>
+        </div>
+        {/* </div> */}
         <div className="container">
           <div className="columns is-multiline">
 
@@ -86,7 +95,7 @@ function ComposantAvecImage({ ip }) {
             <p className="modal-card-title">Nouvelle marque</p>
             <button className="delete" aria-label="close" onClick={closeModal}></button>
           </header>
-          <ModalAvecImage/>
+          <ModalAvecImage api={apiUrl}/>
         </div>
       </div>
     </>
