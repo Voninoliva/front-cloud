@@ -24,6 +24,7 @@ export default function Menu() {
                         </a>
                         <ul id="collapse" className="is-collapsible">
                             <li><a href="/categorie">Categorie</a></li>
+                            <li><a href="/option">Options</a></li>
                             <li><a href="/marque">Marque</a></li>
                             <li><a href="/carrosserie">Carrosserie</a></li>
                             <li><a href="/energie">Energie</a></li>

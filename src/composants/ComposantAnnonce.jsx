@@ -1,25 +1,25 @@
 import { useFetchData } from "../api-integrations/getFromApi";
 import 'bulma-carousel/dist/css/bulma-carousel.min.css';
-import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
-import UneAnnonce from "./enfants/UnComposantAvecImage";
+import UneAnnonce from "./enfants/UneAnnonce";
 function ComposantAnnonce({ ip }) {
-    const apiUrl = `${ip}:8080/annonce`;console.log(apiUrl);
+    const apiUrl = `${ip}:8080/annonce`;
+    // console.log(apiUrl);
     const donnees = useFetchData(apiUrl);
+    // console.log(donnees);
     const renderDetails = () => {
         return donnees.map((detail, index) => (
-            <UneAnnonce key={index} details={detail} />
+            <UneAnnonce key={index} details={detail} ip={ip}/>
         ));
     };
-    bulmaCarousel.attach('.carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        navigation: false,
+    document.addEventListener('load', () => {
+        document.querySelector('.pageloader').classList.add('is-active');
     });
+   
     return (
         <>
             <section className="section">
                 <div className="container">
-                    <div className="columns is-multiline">
+                    <div className="tile is-ancestor columns is-multiline">
                         {renderDetails()}
                     </div>
                 </div>

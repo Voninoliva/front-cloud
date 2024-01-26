@@ -2,8 +2,6 @@ import Categorie from "./composants/Categorie";
 import 'bulma/css/bulma.min.css';
 import 'bulma-dashboard/dist/bulma-dashboard.min.css';
 import 'bulma-pricingtable/dist/css/bulma-pricingtable.min.css';
-// import './assets/mystyle.css';
-// import './assets/bulma-badge.min.css';
 import 'bulma-carousel';
 import 'bulma-pageloader';
 import Menu from "./composants/Menu";
@@ -11,8 +9,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ComposantAvecImage from "./composants/ComposantAvecImage";
 import ComposantDuModele from "./composants/ComposantDuModele.jsx";
 import ComposantAnnonce from "./composants/ComposantAnnonce.jsx";
+import Option from "./composants/Option.jsx";
 export default function App() {
-  const ip="http://172.50.0.14";
+  const ip="http://172.10.9.204";
+
   return (<>
     <div className="dashboard is-full-height">
       <Menu></Menu>
@@ -51,6 +51,7 @@ export default function App() {
             <Route path="/marque" element={<ComposantAvecImage  ip={ip} />} />
             <Route path="/annonce" element={<ComposantAnnonce  ip={ip} />} />
             <Route path="/modele/:idmarque" element={<ComposantDuModele  ip={ip} />} />
+            <Route path="//option" element={<Option  ip={ip} />} />
           </Routes>
         </Router>
       </div>

@@ -1,17 +1,12 @@
 function UnComposantAvecImage(props){
-    const byteArray = props.details.img;
-
-    // Convertir le tableau de bytes en un objet Blob
-    const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Remplacez 'image/jpeg' par le type d'image approprié
-  
-    // Créer une URL à partir de l'objet Blob
-    const imageUrl = URL.createObjectURL(blob);
+    const byteArray = props.details.photo;
+    // const imageUrl = `data:image/png;base64,${byteArray}`;
     return (<>
     <div className="column is-3">
                 <div className="card">
                     <div className="card-image">
                         <figure className="image is-4by3">
-                            <img src={imageUrl}
+                            <img src={byteArray}
                                  alt={props.details.nomcontient}/>
                         </figure>
                     </div>

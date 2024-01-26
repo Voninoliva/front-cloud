@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import Resizer from 'react-image-file-resizer';
 export const useFetchData = (url) => {
   const [donnees, setDonnees] = useState([]);
 
@@ -29,7 +29,6 @@ export const useSubmitData = () => {
     try {
       // alert(" string data"+JSON.stringify(formData));
       console.log(JSON.stringify(formData));
-      const e=JSON.stringify(formData);
       const response = await fetch(url, {
         method: 'POST', // ou 'PUT' ou 'PATCH', selon votre besoin
         headers: {
@@ -45,6 +44,7 @@ export const useSubmitData = () => {
       const responseData = await response.json();
       return responseData; // Retourne la réponse si besoin
     } catch (error) {
+      alert(error);
       throw error; // Propage l'erreur pour que le composant puisse la gérer
     }
   };
@@ -52,32 +52,6 @@ export const useSubmitData = () => {
   return submitData;
 };
 
-export const useSubmitDataI = () => {
-  const submitData = async (url, formData) => {
-    try {
-      console.log(formData);
-      const e=JSON.stringify(formData);
-      const response = await fetch(url, {
-        method: 'POST', // ou 'PUT' ou 'PATCH', selon votre besoin
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        body: formData,
-      });
-
-      if (!response.ok) {
-        alert(`Erreur HTTP : ${response.status}`);
-      }
-      // Vous pouvez traiter la réponse si nécessaire
-      const responseData = await response.json();
-      return responseData; // Retourne la réponse si besoin
-    } catch (error) {
-      throw error; // Propage l'erreur pour que le composant puisse la gérer
-    }
-  };
-
-  return submitData;
-};
 
 
 export function lireContenuImage(fichier) {
@@ -100,39 +74,40 @@ export function lireContenuImage(fichier) {
   });
 }
 
-// export function afficherImage(bytesArray) {
-//   const blob = new Blob([bytesArray], { type: 'image/png' }); // Assurez-vous de définir le bon type MIME selon le type d'image
-//   const imageUrl = URL.createObjectURL(blob);
-
-//   const nouvelleImage = document.createElement('img');
-//   nouvelleImage.src = imageUrl;
-
-//   document.body.appendChild(nouvelleImage);
-// }
-export function afficherImage(bytesArray) {
-  const blob = new Blob([bytesArray], { type: 'image/png' });
-  const imageUrl = URL.createObjectURL(blob);
-
-  const modal = document.createElement('div');
-  modal.className = 'modal is-active';
-
-  modal.innerHTML = `
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <p class="image">
-        <img src="${imageUrl}" alt="Image" />
-      </p>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  `;
-
-  // Ajouter le modal au corps du document
-  document.body.appendChild(modal);
-
-  // Ajouter un gestionnaire d'événements pour fermer le modal lorsque le bouton de fermeture est cliqué
-  const closeButton = modal.querySelector('.modal-close');
-  closeButton.addEventListener('click', () => {
-    document.body.removeChild(modal);
+export default async function resizeAndCompressImage(file) {
+  return new Promise((resolve, reject) => {
+    Resizer.imageFileResizer(
+      file,
+      undefined, // Nouvelle largeur
+      undefined, // Nouvelle hauteur
+      'PNG', // Format de sortie
+      70, // Qualité de compression (0-100)
+      0, // Rotation (0 pour aucune rotation)
+      (uri) => {
+        // La variable uri contiendra l'image redimensionnée et compressée en base64
+        // Vous pouvez maintenant faire quelque chose avec cette valeur, par exemple l'envoyer au serveur.
+        resolve(uri);
+        // Ajoutez le code ici pour effectuer des actions supplémentaires avec l'image redimensionnée (uri)
+      },
+      'base64' // Format de sortie (base64 ou blob)
+    );
   });
 }
+export function getFormValues (form) 
+ {
+  const formData = new FormData(form);
+  const values = {};
+  formData.forEach((value, key) => {
+    if (values[key]) {
+      if (Array.isArray(values[key])) {
+        values[key].push(value);
+      } else {
+        values[key] = [values[key], value];
+      }
+    } else {
+      values[key] = value;
+    }
+  });
 
+  return values;
+};

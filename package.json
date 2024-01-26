@@ -15,11 +15,14 @@
     "bulma": "^0.9.4",
     "bulma-carousel": "^4.0.24",
     "bulma-dashboard": "^0.3.2",
+    "bulma-list": "^1.2.0",
     "bulma-pageloader": "^0.3.0",
     "bulma-pricingtable": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1"
+    "react-image-file-resizer": "^0.4.8",
+    "react-router-dom": "^6.21.1",
+    "resize-base64": "^1.0.12"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

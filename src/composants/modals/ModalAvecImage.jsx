@@ -1,54 +1,66 @@
-import React, { Component } from 'react';
-import { lireContenuImage } from '../../api-integrations/getFromApi';
+import React, { useState } from 'react';
 import { useSubmitData, useFetchData } from '../../api-integrations/getFromApi';
+import resizeAndCompressImage from '../../api-integrations/getFromApi';
 // import { } from '../api-integrations/getFromApi';
 const ModalAvecImage = ({ api }) => {
-  const api0 = api.replace(/marque/g, "continent");
+  const [compressedImage, setCompressedImage] = useState(null);
+  const api0 = api.replace(/marque/g, 'continent');
   const donnees = useFetchData(api0);
-  var a = '';
   const renderDetails = () => {
     return donnees.map((detail) => (
-      a = detail.nomcontinent,
-      <option value={detail.idcontinent} key={detail.idcontinent}>{a}</option>
+      <option value={detail.idcontinent} key={detail.idcontinent}>
+        {detail.nomcontinent}
+      </option>
     ));
   };
-  const ajouterEvenementValidation = async (e) => {
-    recupDonneesFormulaire();
-  }
-  const submitData = useSubmitData();
 
-  async function recupDonneesFormulaire() {
+  const ajouterEvenementValidation = async (e) => {
+    e.preventDefault();
+    recupDonneesFormulaire();
+  };
+
+  const recupDonneesFormulaire = async () => {
     const formulaire = document.querySelector('form');
     const formData = new FormData(formulaire);
     const marque = formData.get('nommarque');
     const fichier = formData.get('sary');
     const idcontinent = formData.get('idcontinent');
-    const formData0 = new FormData();
-    if (fichier && fichier.type.startsWith('image/')) {
-      lireContenuImage(fichier)
-        .then(async ({ bytesArray, blob }) => {
-          const jsonData = {
-            nommarque: marque,
-            continent : {
-              idcontinent: idcontinent,
-              nomcontinent:null
-            },
-            photo: bytesArray, // Vous pouvez également utiliser blob ici si nécessaire,
-          };
-          // formData0.append('marque', marque);new Blob([bytesArray], { type: 'image/png' }), 'nomDuFichier.png'
-          // formData0.append('continent[idcontinent]', idcontinent);
-          // formData0.append('continent[nomcontinent]', null);
-          // formData0.append('photo',bytesArray );
-          const responseData = await submitData(api, jsonData);
 
-        })
-        .catch((error) => {
-          alert('Erreur lors de la lecture de l\'image: ' + error);
-        });
-    } else {
-      alert('Aucune image valide sélectionnée');
+    try {
+      const compressedImg = await resizeAndCompressImage(fichier);
+      setCompressedImage(compressedImg);
+
+      const jsonData = {
+        nommarque: marque,
+        continent: {
+          idcontinent: idcontinent,
+        },
+        photo: compressedImg,
+      };
+
+      alert('  jss ' + JSON.stringify(jsonData));
+      console.log(JSON.stringify(jsonData));
+
+      const response = await fetch(api, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+      });
+
+      if (!response.ok) {
+        alert(`Erreur HTTP : ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      alert(responseData);
+    } catch (error) {
+      alert('Erreur lors de la redimension et compression de l\'image :' + error);
     }
-  }
+  };
+
+
   return (
     <>
       <form onSubmit={ajouterEvenementValidation} encType='multipart/form-data'>
@@ -69,7 +81,12 @@ const ModalAvecImage = ({ api }) => {
                   <div className="control is-expanded">
                     <div className="file">
                       <label className="file-label">
-                        <input className="file-input" type="file" name="sary" />
+                        <input className="file-input" type="file" name="sary" onChange={async (e) => {
+                          // Mettez à jour l'état de l'image compressée lors du changement du fichier
+                          const file = e.target.files[0];
+                          const compressedImg = await resizeAndCompressImage(file);
+                          setCompressedImage(compressedImg);} }
+                        />
                         <span className="file-cta">
                           <span className="file-icon">
                             <span className="material-symbols-outlined">
