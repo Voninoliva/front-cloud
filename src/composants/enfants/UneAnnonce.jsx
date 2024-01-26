@@ -1,46 +1,45 @@
 import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
 import { useFetchData } from "../../api-integrations/getFromApi";
-import '../../assets/style.css';
+import '../../assets/css/style.css';
 import 'bulma-list/css/bulma-list.css';
 function UneAnnonce(props) {
     const apiv = `${props.ip}:8080/voiture/${props.details.idvoiture}`;
     var apim = '';
     const voitures = useFetchData(apiv);
     if (voitures) {
-        console.log("ur = ", apiv);
-        console.log("ettttt", voitures);
+        console.log("voiture lien = ", apiv);
+        console.log("voiture json = ", voitures);
         const v = `${props.ip}:8080/modele/${voitures.idmodele}`;
         apim = useFetchData(v);
+        console.log("modele an le voiture = ", apim);
     }
     bulmaCarousel.attach('.carousel', {
         slidesToScroll: 1,
         slidesToShow: 1,
         navigation: false,
     });
+    const defaultImages = [
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+    ];
+    const displayedImages =
+        photos.length > 0 ? voitures.photo.slice(0, 3) : defaultImages.slice(0, 3);
+
+
     return (
         <>
             <div className="tile is-parent is-4">
                 <a className="tile is-child card" href={`/modele/${props.details.idmarque}`}>
                     <div className="card-image">
                         <div className="carousel" style={{ overflowX: 'hidden' }}>
-                            <div className="item-1">
-                                <figure className="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png"
-                                        alt="Placeholder image" />
-                                </figure>
-                            </div>
-                            <div className="item-2">
-                                <figure className="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png"
-                                        alt="Placeholder image" />
-                                </figure>
-                            </div>
-                            <div className="item-3">
-                                <figure className="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png"
-                                        alt="Placeholder image" />
-                                </figure>
-                            </div>
+                            {displayedImages.map((image, index) => (
+                                <div key={index} className={`item-${index + 1}`}>
+                                    <figure className="image is-4by3">
+                                        <img src={image} alt={`Car Image ${index + 1}`} />
+                                    </figure>
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <div className="card-content p-3">

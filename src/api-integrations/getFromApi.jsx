@@ -22,7 +22,32 @@ export const useFetchData = (url) => {
 
   return donnees;
 };
+export const useFetchDataToken = (url,token) => {
+  const [donnees, setDonnees] = useState([]);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(url, {
+          headers: {
+            'Authorization': `Bearer ${token}`, 
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const data = await response.json();
+        setDonnees(data); 
+      } catch (error) {
+        console.error(`Erreur lors de la récupération des données depuis ${url} :`, error);
+      }
+    })();
+  }, [url]);
+
+  return donnees;
+};
 
 export const useSubmitData = () => {
   const submitData = async (url, formData) => {
