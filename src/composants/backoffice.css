@@ -1,0 +1,24 @@
+@media screen and (max-width: 1024px) {
+    .dashboard-panel {
+        position: absolute;
+        transform: translateX(-100%);
+        transition: 350ms;
+        z-index: 1;
+    }
+
+    .dashboard-main {
+        position: relative;
+        transform: translateX(0%);
+        transition: 350ms;
+    }
+
+    .dashboard-panel.is-active {
+        position: relative;
+        transform: translateX(0%);
+        transition: 350ms;
+
+        .dashboard-main {
+            position: absolute;
+        }
+    }
+}

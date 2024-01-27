@@ -13,6 +13,7 @@ import ComposantAnnonce from "./ComposantAnnonce.jsx";
 import Option from "./Option.jsx";
 import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
 import Dashboard from "./Dashboard.jsx";
+import './backoffice.css';
 function BackOffice({ ip }) {
   const burger = () => {
     document.querySelector('');
