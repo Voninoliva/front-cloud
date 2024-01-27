@@ -8,6 +8,9 @@ export default function Menu() {
     //   });
     return (
         <div className="dashboard-panel is-small is-scrollable has-background-light">
+            <div className="buttons is-right">
+                <a className="delete close-menu"></a>
+            </div>
             <header className="dashboard-panel-header">
                 <div className="has-text-centered">
                     <img src={logo} width="50%"></img>
