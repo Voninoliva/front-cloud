@@ -74,8 +74,8 @@ function Login({ ip }) {
     }
     return (
         <>
-            <div className="section">
-                <div className="box" style={{ height: '590px', overflowY: 'hidden', overflowX: 'hidden' }}>
+            <div className="section" style={{height: '100vh'}}>
+                <div className="box" style={{ overflowY: 'hidden', overflowX: 'hidden' }}>
                     <div className="columns">
                         <div className="column is-8 p-0 is-hidden-touch">
                             <div className="carousel-login" style={{ overflowX: 'hidden' }}>
