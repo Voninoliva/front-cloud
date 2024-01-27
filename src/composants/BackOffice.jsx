@@ -16,7 +16,7 @@ import Dashboard from "./Dashboard.jsx";
 import './backoffice.css';
 function BackOffice({ ip }) {
   const burger = () => {
-    document.querySelector('');
+    document.querySelector('.dashboard-panel').classList.toggle('is-active');
   }
   return (
     <>
