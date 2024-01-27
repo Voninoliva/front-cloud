@@ -26,11 +26,9 @@ function BackOffice({ ip }) {
           <nav className="navbar is-fixed-top">
             <div className="navbar-brand">
               <div className="navbar-item">
-                <div className="content">
-                  <h3 className="title">
-                    Admin
-                  </h3>
-                </div>
+                <h3 className="title">
+                  Admin
+                </h3>
               </div>
               <div className="navbar-burger" onClick={burger}>
                 <span className="icon">
