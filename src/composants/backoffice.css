@@ -16,9 +16,5 @@
         position: relative;
         transform: translateX(0%);
         transition: 350ms;
-
-        .dashboard-main {
-            position: absolute;
-        }
     }
 }
