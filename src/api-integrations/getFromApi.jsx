@@ -48,11 +48,34 @@ export const useFetchDataToken = (url,token) => {
 
   return donnees;
 };
+export const useSubmitDataToken = () => {
+  const submitData = async (url, formData,token) => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, 
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+      }
+      // Vous pouvez traiter la réponse si nécessaire
+      const responseData = await response.json();
+      return responseData; // Retourne la réponse si besoin
+    } catch (error) {
+      throw error; // Propage l'erreur pour que le composant puisse la gérer
+    }
+  };
+
+  return submitData;
+};
 
 export const useSubmitData = () => {
   const submitData = async (url, formData) => {
     try {
-      // alert(" string data"+JSON.stringify(formData));
       console.log(JSON.stringify(formData));
       const response = await fetch(url, {
         method: 'POST', // ou 'PUT' ou 'PATCH', selon votre besoin
@@ -63,13 +86,11 @@ export const useSubmitData = () => {
       });
 
       if (!response.ok) {
-        alert(`Erreur HTTP : ${response.status}`);
       }
       // Vous pouvez traiter la réponse si nécessaire
       const responseData = await response.json();
       return responseData; // Retourne la réponse si besoin
     } catch (error) {
-      alert(error);
       throw error; // Propage l'erreur pour que le composant puisse la gérer
     }
   };
@@ -91,7 +112,6 @@ export function lireContenuImage(fichier) {
     };
 
     reader.onerror = function (error) {
-      alert("erreur et ="+error);
       reject(error);
     };
 

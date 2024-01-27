@@ -20,7 +20,6 @@ function UneAnnonce(props) {
         "modele":apim,
         "api":props.ip
     }
-    alert(pour_detail);
     bulmaCarousel.attach('.carousel', {
         slidesToScroll: 1,
         slidesToShow: 1,
@@ -35,7 +34,7 @@ function UneAnnonce(props) {
     return (
         <>
             <div className="tile is-parent is-4">
-                <a className="tile is-child card" href={`/detailAnnonce/${props.details}`}>
+                <a className="tile is-child card" href={`/detailAnnonce/${props.details.idannonce}`}>
                     <div className="card-image">
                         <div className="carousel" style={{ overflowX: 'hidden' }}>
                             {displayedImages.map((image, index) => (
