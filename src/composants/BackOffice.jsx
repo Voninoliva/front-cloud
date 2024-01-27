@@ -4,6 +4,7 @@ import 'bulma-dashboard/dist/bulma-dashboard.min.css';
 import 'bulma-pricingtable/dist/css/bulma-pricingtable.min.css';
 import 'bulma-carousel';
 import 'bulma-pageloader';
+import logo from'../assets/img/logo.png';
 import Menu from "./Menu";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ComposantAvecImage from "./ComposantAvecImage";
@@ -39,7 +40,7 @@ return(
               </div>
               <div className="navbar-item">
                 <figure className="image">
-                  <img className="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"></img>
+                  <img className="is-rounded" src={logo}></img>
                 </figure>
               </div>
             </div>

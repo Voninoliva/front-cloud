@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
 import OptionKely from "./OptionsKely";
-import { useSubmitDataToken } from "../../api-integrations/getFromApi";
+import { useUpdateDataToken } from "../../api-integrations/getFromApi";
 
 function DetailAnnonce({ ip }) {
     bulmaCarousel.attach('.carousel', {
@@ -60,7 +60,7 @@ function DetailAnnonce({ ip }) {
         </>
     ) : null;
     const lien = `${ip}/validation`;
-    const submitData = useSubmitDataToken();
+    const submitData = useUpdateDataToken();
     const confirmer = async (e) => {
         try {
           e.preventDefault();
@@ -68,9 +68,7 @@ function DetailAnnonce({ ip }) {
              'etat': 1,
              'idannonce':idannonce
             };
-          alert(JSON.stringify(objetAEnvoyer));
           const responseData = await submitData(lien, objetAEnvoyer,localStorage.getItem('token'));
-          alert(responseData);
         } catch (error) {
         }
       };

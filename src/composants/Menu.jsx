@@ -1,5 +1,6 @@
 import '@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css';
 import { bulmaCollapsible } from '@creativebulma/bulma-collapsible';
+import logo from'../assets/img/logo.png';
 export default function Menu() {
     // bulmaCollapsible.attach('.is-collapsible');
     // document.addEventListener('load', function () {
@@ -9,7 +10,7 @@ export default function Menu() {
         <div className="dashboard-panel is-small is-scrollable has-background-light">
             <header className="dashboard-panel-header">
                 <div className="has-text-centered">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="50%"></img>
+                    <img src={logo} width="50%"></img>
                 </div>
             </header>
             <aside className="menu has-text-white">
