@@ -1,10 +1,10 @@
 import { bulmaCarousel } from 'bulma-carousel/dist/js/bulma-carousel.min.js';
 import '../assets/css/mystyle.css';
 import '../assets/css/bulma-divider.css';
-import { Navigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import sary from '../assets/img/login.jpg';
-import logo from '../assets/img/logo.png';
+import logo from '../assets/img/logo-white.png';
 function Login({ ip }) {
     // animations
     function initCarouselLogin() {
@@ -61,7 +61,7 @@ function Login({ ip }) {
             if (response.ok) {
                 const responseData = await response.json();
                 const token = responseData.response.token;
-                localStorage.setItem('token', token);
+                localStorage.setItem('token',token);
                 navigate('/marque');
             }
             else {
@@ -74,51 +74,53 @@ function Login({ ip }) {
     }
     return (
         <>
-            <div className="box" style={{ height: '590px', overflowY: 'hidden', overflowX: 'hidden' }}>
-                <div className="columns">
-                    <div className="column is-8 p-0 is-hidden-touch">
-                        <div className="carousel-login" style={{ overflowX: 'hidden' }}>
-                            <div className="item-1">
-                                <figure className="image is-4by3">
-                                    <img src={sary} alt="Placeholder image" />
-                                </figure>
+            <div className="section">
+                <div className="box" style={{ height: '590px', overflowY: 'hidden', overflowX: 'hidden' }}>
+                    <div className="columns">
+                        <div className="column is-8 p-0 is-hidden-touch">
+                            <div className="carousel-login" style={{ overflowX: 'hidden' }}>
+                                <div className="item-1">
+                                    <figure className="image is-4by3">
+                                        <img src={sary} alt="Placeholder image" />
+                                    </figure>
+                                </div>
                             </div>
                         </div>
+                        <form className="column is-4 is-full-touch pl-5" onSubmit={handleSubmit}>
+                            <div className="content is-flex is-flex-direction-column is-justify-content-center"
+                                style={{ height: '92.5%' }}>
+                                <div className="is-flex is-justify-content-center">
+                                    <figure className="image is-64x64 is-flex">
+                                        <img src={logo} className="is-rounded" />
+                                    </figure>
+                                </div>
+                                <div className="field">
+                                    <label className="label">
+                                        E-mail
+                                    </label>
+                                    <div className="control">
+                                        <input type="email" className="input" placeholder="Entrez votre adresse e-mail" name='email' defaultValue='steph@gmail.com' />
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label className="label">
+                                        Mot de passe
+                                    </label>
+                                    <div className="control">
+                                        <input type="password" className="input" placeholder="Entrez votre mot de passe" name='pwd' defaultValue='1234' />
+                                    </div>
+                                </div>
+                                <br />
+                                <div className="field">
+                                    <div className="control">
+                                        <button type='submit' className="button is-fullwidth is-info">
+                                            Se connecter
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <form className="column is-4 is-full-touch pl-5" onSubmit={handleSubmit}>
-                        <div className="content is-flex is-flex-direction-column is-justify-content-center"
-                            style={{ height: '92.5%' }}>
-                            <div className="is-flex is-justify-content-center">
-                                <figure className="image is-64x64 is-flex">
-                                    <img src={logo} className="is-rounded" />
-                                </figure>
-                            </div>
-                            <div className="field">
-                                <label className="label">
-                                    E-mail
-                                </label>
-                                <div className="control">
-                                    <input type="email" className="input" placeholder="Entrez votre adresse e-mail" name='email' defaultValue='steph@gmail.com' />
-                                </div>
-                            </div>
-                            <div className="field">
-                                <label className="label">
-                                    Mot de passe
-                                </label>
-                                <div className="control">
-                                    <input type="password" className="input" placeholder="Entrez votre mot de passe" name='pwd' defaultValue='1234' />
-                                </div>
-                            </div>
-                            <br />
-                            <div className="field">
-                                <div className="control">
-                                    <button type='submit' className="button is-fullwidth is-info">
-                                        Se connecter
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </>
