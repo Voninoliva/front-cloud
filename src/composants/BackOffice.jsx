@@ -25,17 +25,17 @@ function BackOffice({ ip }) {
         <div className="dashboard-main is-scrollable">
           <nav className="navbar is-fixed-top">
             <div className="navbar-brand">
-              <div className="navbar-burger" onClick={burger}>
-                <span className="icon">
-                  <i class="fa-solid fa-list fa-lg"></i>
-                </span>
-              </div>
               <div className="navbar-item">
                 <div className="content">
                   <h3 className="title">
                     Admin
                   </h3>
                 </div>
+              </div>
+              <div className="navbar-burger" onClick={burger}>
+                <span className="icon">
+                  <i class="fa-solid fa-list fa-lg"></i>
+                </span>
               </div>
             </div>
             <div className="navbar-menu">
