@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSubmitData,useFetchData } from './../api-integrations/getFromApi';
 
 function Option({ ip }) {
-    const apiUrl = `${ip}:8080/options`;
+    const apiUrl = `${ip}/options`;
     const donnees =useFetchData(apiUrl);
     const groupes = donnees.reduce((acc, element) => {
         const idtype = element.idtype;

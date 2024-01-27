@@ -3,7 +3,7 @@ import DetailCategorie from "./enfants/DetailCategorie";
 import { useFetchData} from '../api-integrations/getFromApi';
 import ModalCategorie from "./modals/ModalCategorie";
 function Categorie({ ip, apiName }) {
-    const apiUrl = `${ip}:8080/${apiName}`;
+    const apiUrl = `${ip}/${apiName}`;
     const donnees = useFetchData(apiUrl);
     const renderDetails = () => {
         return donnees.map((detail, index) => (

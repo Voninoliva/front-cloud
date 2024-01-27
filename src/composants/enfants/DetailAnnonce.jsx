@@ -3,12 +3,12 @@ import { useFetchData } from "../../api-integrations/getFromApi";
 function DetailAnnonce({ip}){
     const {annonce} = useParams();
     console.log("annonce ",annonce);
-    const voitures = useFetchData(`${ip}:8080/voiture/${annonce.idvoiture}`);
+    const voitures = useFetchData(`${ip}/voiture/${annonce.idvoiture}`);
     var modele='';
     if (voitures) {
         console.log("voiture lien = ", apiv);
         console.log("voiture json = ", voitures);
-        modele = useFetchData(`${props.ip}:8080/modele/${voitures.idmodele}`);
+        modele = useFetchData(`${props.ip}/modele/${voitures.idmodele}`);
         console.log("modele an le voiture = ", modele);
     }
     return (

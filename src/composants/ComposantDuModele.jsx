@@ -5,7 +5,7 @@ import ModalModele from "./modals/ModalModele";
 function ComposantDuModele({ip}) {
     const { idmarque } = useParams();
     const apiName = `modele/m/${idmarque}`;
-    const apiUrl = `${ip}:8080/${apiName}`;
+    const apiUrl = `${ip}/${apiName}`;
     const donnees = useFetchData(apiUrl);
     const renderDetails = () => {
         return donnees.map((detail, index) => (
@@ -43,7 +43,7 @@ function ComposantDuModele({ip}) {
                         <p className="modal-card-title">Nouveau modele</p>
                         <button className="delete" aria-label="close" onClick={closeModal}></button>
                     </header>
-                    <ModalModele api={`${ip}:8080/modele`}  idmarque={idmarque}/>
+                    <ModalModele api={`${ip}/modele`}  idmarque={idmarque}/>
                 </div>
             </div>
         </>

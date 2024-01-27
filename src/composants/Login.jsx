@@ -3,6 +3,7 @@ import '../assets/css/mystyle.css';
 import '../assets/css/bulma-divider.css';
 import {Navigate} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import sary from '../assets/img/login.jpg';
 function Login({ ip }) {
     // animations
     function initCarouselLogin() {
@@ -36,7 +37,7 @@ function Login({ ip }) {
         // initCarouselLogin();
     });
     // metier
-    const v = `${ip}:8080/login/auth`;
+    const v = `${ip}/login/auth`;
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -79,7 +80,7 @@ function Login({ ip }) {
                             <div className="carousel-login" style={{ overflowX: 'hidden' }}>
                                 <div className="item-1">
                                     <figure className="image is-4by3">
-                                        <img src="assets/img/undraw_electric_car_b-7-hl.svg" alt="Placeholder image" />
+                                        <img src={sary} alt="Placeholder image" />
                                     </figure>
                                 </div>
                             </div>
@@ -97,7 +98,7 @@ function Login({ ip }) {
                                         E-mail
                                     </label>
                                     <div className="control">
-                                        <input type="email" className="input" placeholder="Entrez votre adresse e-mail" name='email' defaultValue='rasoa@gmail.com' />
+                                        <input type="email" className="input" placeholder="Entrez votre adresse e-mail" name='email' defaultValue='steph@gmail.com' />
                                     </div>
                                 </div>
                                 <div className="field">

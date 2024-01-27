@@ -4,13 +4,13 @@ import '../../assets/css/style.css';
 import 'bulma-list/css/bulma-list.css';
 function UneAnnonce(props) {
     console.log(props.details);
-    const apiv = `${props.ip}:8080/voiture/${props.details.idvoiture}`;
+    const apiv = `${props.ip}/voiture/${props.details.idvoiture}`;
     var apim = '';
     const voitures = useFetchData(apiv);
     if (voitures) {
         console.log("voiture lien = ", apiv);
         console.log("voiture json = ", voitures);
-        const v = `${props.ip}:8080/modele/${voitures.idmodele}`;
+        const v = `${props.ip}/modele/${voitures.idmodele}`;
         apim = useFetchData(v);
         console.log("modele an le voiture = ", apim);
     }

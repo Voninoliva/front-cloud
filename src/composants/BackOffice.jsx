@@ -11,6 +11,7 @@ import ComposantDuModele from "./ComposantDuModele.jsx";
 import ComposantAnnonce from "./ComposantAnnonce.jsx";
 import Option from "./Option.jsx";
 import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
+import Dashboard from "./Dashboard.jsx";
 function BackOffice({ip}){
 return(
     <>
@@ -54,6 +55,7 @@ return(
             <Route path="/modele/:idmarque" element={<ComposantDuModele ip={ip} />} />
             <Route path="/detailAnnonce/:idannonce" element={<DetailAnnonce ip={ip} />} />
             <Route path="/option" element={<Option ip={ip} />} />
+            <Route path="/dashboard" element={<Dashboard ip={ip} />} />
           </Routes>
       </div>
     </div>

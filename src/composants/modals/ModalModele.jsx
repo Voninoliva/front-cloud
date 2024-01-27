@@ -41,14 +41,8 @@ const ModalModele = ({ api, idmarque }) => {
                     "idcarrosserie": formData.get('idcarrosserie')
                 }
             };
-
-            alert(JSON.stringify(modeleData));
-
-            //   const apiUrl = ip;
               const responseData = await submitData(api, modeleData);
-              alert(responseData);
         } catch (error) {
-            alert(error);
         }
     };
     return (

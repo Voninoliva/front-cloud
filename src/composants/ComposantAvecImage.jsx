@@ -4,7 +4,7 @@ import UnComposantAvecImage from "./enfants/UnComposantAvecImage";
 import ModalAvecImage from './modals/ModalAvecImage';
 function ComposantAvecImage({ ip }) {
   const apiName = 'marque';
-  const apiUrl = `${ip}:8080/${apiName}`;
+  const apiUrl = `${ip}/${apiName}`;
   const donnees = useFetchData(apiUrl);
   const itemsPerPage = 8; // Nombre d'éléments par page
   const [currentPage, setCurrentPage] = useState(1);

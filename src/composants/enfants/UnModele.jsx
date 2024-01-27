@@ -1,5 +1,4 @@
 function UnModele(props){
-    // console.log();
         return (
             <>
                 <div className="pricing-plan">

@@ -1,6 +1,5 @@
 function UnComposantAvecImage(props){
     const byteArray = props.details.photo;
-    // const imageUrl = `data:image/png;base64,${byteArray}`;
     return (<>
     <div className="column is-3">
                 <div className="card">

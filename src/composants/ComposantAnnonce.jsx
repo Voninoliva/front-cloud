@@ -2,7 +2,7 @@ import { useFetchDataToken } from "../api-integrations/getFromApi";
 import 'bulma-carousel/dist/css/bulma-carousel.min.css';
 import UneAnnonce from "./enfants/UneAnnonce";
 function ComposantAnnonce({ ip }) {
-    const apiUrl = `${ip}:8080/annonce/unvalid`;
+    const apiUrl = `${ip}/annonce/unvalid`;
     console.log(apiUrl);
     const donnees = useFetchDataToken(apiUrl,localStorage.getItem('token'));
     console.log(donnees);

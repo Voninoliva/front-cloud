@@ -37,10 +37,6 @@ const ModalAvecImage = ({ api }) => {
         },
         photo: compressedImg,
       };
-
-      alert('  jss ' + JSON.stringify(jsonData));
-      console.log(JSON.stringify(jsonData));
-
       const response = await fetch(api, {
         method: 'POST',
         headers: {
@@ -48,15 +44,13 @@ const ModalAvecImage = ({ api }) => {
         },
         body: JSON.stringify(jsonData),
       });
-
       if (!response.ok) {
-        alert(`Erreur HTTP : ${response.status}`);
+        console.log(`Erreur HTTP : ${response.status}`);
       }
 
       const responseData = await response.json();
-      alert(responseData);
     } catch (error) {
-      alert('Erreur lors de la redimension et compression de l\'image :' + error);
+      // alert('Erreur lors de la redimension et compression de l\'image :' + error);
     }
   };
 
