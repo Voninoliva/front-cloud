@@ -125,7 +125,7 @@ function Dashboard({ ip }) {
                             <div className="tile is-vertical">
                                 <div className="tile is-ancestor">
                                     <div className="tile is-parent">
-                                        <div className="tile is-child card">
+                                        <div className="tile is-child card is-clickable">
                                             <div className="card-content has-text-info has-text-centered">
                                                 <span className="icon is-large">
                                                     <i className="fa-solid fa-wallet fa-2x"></i>
@@ -140,7 +140,7 @@ function Dashboard({ ip }) {
                                         </div>
                                     </div>
                                     <div className="tile is-parent">
-                                        <div className="tile is-child card">
+                                        <div className="tile is-child card is-clickable">
                                             <div className="card-content has-text-info has-text-centered">
                                                 <span className="icon is-large">
                                                     <i className="fas fa-user fa-2x"></i>
@@ -155,7 +155,7 @@ function Dashboard({ ip }) {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="tile is-child card">
+                                <div className="tile is-child card is-clickable">
                                     <div className="card-content">
                                         <div className="is-flex is-justify-content-space-between">
                                             <h3>Revenue</h3>
@@ -178,7 +178,7 @@ function Dashboard({ ip }) {
                         </div>
                         <div className="tile is-parent is-4">
                             <div className="tile is-vertical">
-                                <div className="tile is-child card" style={{ flexGrow: 'unset' }}>
+                                <div className="tile is-child card is-clickable" style={{ flexGrow: 'unset' }}>
                                     <div className="card-content">
                                         <h3>Commission Actuelle</h3>
                                         <form className="field has-addons has-addons-centered" onSubmit={changerCommission}>
@@ -195,7 +195,7 @@ function Dashboard({ ip }) {
                                         </form>
                                     </div>
                                 </div>
-                                <div className="tile is-child card" style={{ flexGrow: 'unset' }}>
+                                <div className="tile is-child card is-clickable" style={{ flexGrow: 'unset' }}>
                                     <div className="card-content">
                                         <canvas className="chart2"></canvas>
                                     </div>
