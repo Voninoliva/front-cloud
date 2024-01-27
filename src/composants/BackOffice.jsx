@@ -32,7 +32,7 @@ function BackOffice({ ip }) {
               </div>
               <div className="navbar-item">
                 <div className="content">
-                  <h3>
+                  <h3 className="title">
                     Admin
                   </h3>
                 </div>
