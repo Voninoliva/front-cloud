@@ -97,7 +97,7 @@ function Login({ ip }) {
                                         E-mail
                                     </label>
                                     <div className="control">
-                                        <input type="email" className="input" placeholder="Entrez votre adresse e-mail" name='email' value='rasoa@gmail.com' />
+                                        <input type="email" className="input" placeholder="Entrez votre adresse e-mail" name='email' defaultValue='rasoa@gmail.com' />
                                     </div>
                                 </div>
                                 <div className="field">
@@ -105,7 +105,7 @@ function Login({ ip }) {
                                         Mot de passe
                                     </label>
                                     <div className="control">
-                                        <input type="password" className="input" placeholder="Entrez votre mot de passe" name='pwd' value='1234' />
+                                        <input type="password" className="input" placeholder="Entrez votre mot de passe" name='pwd' defaultValue='1234' />
                                     </div>
                                 </div>
                                 <br />

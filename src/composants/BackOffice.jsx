@@ -10,6 +10,7 @@ import ComposantAvecImage from "./ComposantAvecImage";
 import ComposantDuModele from "./ComposantDuModele.jsx";
 import ComposantAnnonce from "./ComposantAnnonce.jsx";
 import Option from "./Option.jsx";
+import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
 function BackOffice({ip}){
 return(
     <>
@@ -51,6 +52,7 @@ return(
             <Route path="/marque" element={<ComposantAvecImage ip={ip} />} />
             <Route path="/annonce" element={<ComposantAnnonce ip={ip} />} />
             <Route path="/modele/:idmarque" element={<ComposantDuModele ip={ip} />} />
+            <Route path="/detailAnnonce/:idannonce" element={<DetailAnnonce ip={ip} />} />
             <Route path="/option" element={<Option ip={ip} />} />
           </Routes>
       </div>

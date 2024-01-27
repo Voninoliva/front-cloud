@@ -3,6 +3,7 @@ import { useFetchData } from "../../api-integrations/getFromApi";
 import '../../assets/css/style.css';
 import 'bulma-list/css/bulma-list.css';
 function UneAnnonce(props) {
+    console.log(props.details);
     const apiv = `${props.ip}:8080/voiture/${props.details.idvoiture}`;
     var apim = '';
     const voitures = useFetchData(apiv);
@@ -13,6 +14,13 @@ function UneAnnonce(props) {
         apim = useFetchData(v);
         console.log("modele an le voiture = ", apim);
     }
+    const pour_detail = {
+        "annonce" :props.details,
+        "voiture": voitures,
+        "modele":apim,
+        "api":props.ip
+    }
+    alert(pour_detail);
     bulmaCarousel.attach('.carousel', {
         slidesToScroll: 1,
         slidesToShow: 1,
@@ -23,14 +31,11 @@ function UneAnnonce(props) {
         'https://bulma.io/images/placeholders/1280x960.png',
         'https://bulma.io/images/placeholders/1280x960.png',
     ];
-    const displayedImages =
-        photos.length > 0 ? voitures.photo.slice(0, 3) : defaultImages.slice(0, 3);
-
-
+    const displayedImages=defaultImages;
     return (
         <>
             <div className="tile is-parent is-4">
-                <a className="tile is-child card" href={`/modele/${props.details.idmarque}`}>
+                <a className="tile is-child card" href={`/detailAnnonce/${props.details}`}>
                     <div className="card-image">
                         <div className="carousel" style={{ overflowX: 'hidden' }}>
                             {displayedImages.map((image, index) => (

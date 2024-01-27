@@ -8,7 +8,7 @@ import Login from './composants/Login';
 import BackOffice from "./composants/BackOffice";
 import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
 export default function App() {
-  const ip = "http://172.50.0.232";
+  const ip ="https://autostreamback-production-56ff.up.railway.app";
   const token = localStorage.getItem('token');
   return (
     <>
