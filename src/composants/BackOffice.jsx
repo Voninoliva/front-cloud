@@ -4,7 +4,7 @@ import 'bulma-dashboard/dist/bulma-dashboard.min.css';
 import 'bulma-pricingtable/dist/css/bulma-pricingtable.min.css';
 import 'bulma-carousel';
 import 'bulma-pageloader';
-import logo from'../assets/img/logo.png';
+import logo from '../assets/img/logo.png';
 import Menu from "./Menu";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ComposantAvecImage from "./ComposantAvecImage";
@@ -13,39 +13,44 @@ import ComposantAnnonce from "./ComposantAnnonce.jsx";
 import Option from "./Option.jsx";
 import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
 import Dashboard from "./Dashboard.jsx";
-function BackOffice({ip}){
-return(
+function BackOffice({ ip }) {
+  const burger = () => {
+    document.querySelector('');
+  }
+  return (
     <>
-     <div className="dashboard is-full-height">
-      <Menu></Menu>
-      <div className="dashboard-main is-scrollable">
-        <nav className="navbar is-fixed-top">
-          <div className="navbar-brand">
-            <div className="navbar-burger">
-              <span></span><span></span><span></span>
-            </div>
-            <span className="navbar-item title">
-              Admin
-            </span>
-          </div>
-          <div className="navbar-menu">
-            <div className="navbar-end">
-              <div className="navbar-item" style={{ cursor: 'pointer' }}>
-                <span className="material-symbols-outlined is-relative">
-                  <a className="navbar-item is-tab is-hidden-desktop sign-in">
-                    Mon profil
-                  </a>
-                  <span className="badge is-top-right"></span>
+      <div className="dashboard is-full-height">
+        <Menu></Menu>
+        <div className="dashboard-main is-scrollable">
+          <nav className="navbar is-fixed-top">
+            <div className="navbar-brand">
+              <div className="navbar-burger" onClick={burger}>
+                <span className="icon">
+                  <i class="fa-solid fa-list fa-lg"></i>
                 </span>
               </div>
-              <div className="navbar-item">
-                <figure className="image">
-                  <img className="is-rounded" src={logo}></img>
-                </figure>
+              <span className="navbar-item title">
+                Admin
+              </span>
+            </div>
+            <div className="navbar-menu">
+              <div className="navbar-end">
+                <div className="navbar-item" style={{ cursor: 'pointer' }}>
+                  <span className="material-symbols-outlined is-relative">
+                    <a className="navbar-item is-tab is-hidden-desktop sign-in">
+                      Mon profil
+                    </a>
+                    <span className="badge is-top-right"></span>
+                  </span>
+                </div>
+                <div className="navbar-item">
+                  <figure className="image">
+                    <img className="is-rounded" src={logo}></img>
+                  </figure>
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
           <Routes>
             {/* <Route exact path="/" element={<Categorie ip={ip} apiName="categorie" />} /> */}
             <Route path="/categorie" element={<Categorie ip={ip} apiName="categorie" />} />
@@ -58,9 +63,9 @@ return(
             <Route path="/option" element={<Option ip={ip} />} />
             <Route path="/dashboard" element={<Dashboard ip={ip} />} />
           </Routes>
+        </div>
       </div>
-    </div>
     </>
-);
+  );
 }
 export default BackOffice;
