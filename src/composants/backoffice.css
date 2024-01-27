@@ -1,13 +1,13 @@
 @media screen and (max-width: 1023px) {
     .dashboard-panel {
-        position: absolute;
+        position: relative;
         transform: translateX(-100%);
         transition: 350ms;
         z-index: 1;
     }
 
     .dashboard-main {
-        position: relative;
+        position: absolute;
         transform: translateX(0%);
         transition: 350ms;
     }
