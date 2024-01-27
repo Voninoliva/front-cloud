@@ -4,6 +4,7 @@ import '../assets/css/bulma-divider.css';
 import {Navigate} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import sary from '../assets/img/login.jpg';
+import logo from '../assets/img/logo.png';
 function Login({ ip }) {
     // animations
     function initCarouselLogin() {
@@ -90,7 +91,7 @@ function Login({ ip }) {
                                 style={{ height: '92.5%' }}>
                                 <div className="is-flex is-justify-content-center">
                                     <figure className="image is-64x64 is-flex">
-                                        <img src="https://bulma.io/images/placeholders/1280x960.png" className="is-rounded" />
+                                        <img src={logo} className="is-rounded" />
                                     </figure>
                                 </div>
                                 <div className="field">
@@ -112,7 +113,7 @@ function Login({ ip }) {
                                 <br />
                                 <div className="field">
                                     <div className="control">
-                                        <button className="button is-fullwidth is-info">
+                                        <button type='submit' className="button is-fullwidth is-info">
                                             Se connecter
                                         </button>
                                     </div>

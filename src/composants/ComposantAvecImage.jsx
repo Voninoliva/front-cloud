@@ -36,16 +36,19 @@ function ComposantAvecImage({ ip }) {
     <>
       <section className="section">
         <div className="container">
-
-          <div className="buttons is-flex is-justify-content-end">
-            {/* Champ de saisie pour le filtre par nom */}
-            <input
-              type="text"
-              placeholder="Filtrer par nom"
-              value={filterName}
-              onChange={(e) => setFilterName(e.target.value)}
-              className="input"
-            />
+          <div className="field is-grouped is-grouped-centered">
+            <div className="control has-icons-left">
+              <input
+                type="text"
+                placeholder="Filtrer par nom"
+                value={filterName}
+                onChange={(e) => setFilterName(e.target.value)}
+                className="input"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
           </div>
         </div>
         <div className="buttons is-flex is-justify-content-end">
@@ -95,7 +98,7 @@ function ComposantAvecImage({ ip }) {
             <p className="modal-card-title">Nouvelle marque</p>
             <button className="delete" aria-label="close" onClick={closeModal}></button>
           </header>
-          <ModalAvecImage api={apiUrl}/>
+          <ModalAvecImage api={apiUrl} />
         </div>
       </div>
     </>
