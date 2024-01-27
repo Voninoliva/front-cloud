@@ -13,7 +13,7 @@
     }
 
     .dashboard-panel.is-active {
-        position: relative;
+        /* position: relative; */
         transform: translateX(0%);
         transition: 350ms;
     }
