@@ -27,7 +27,7 @@ function UneAnnonce(props) {
     });
     // Eto le izy
     const displayedImages = [
-        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://firebasestorage.googleapis.com/v0/b/stockage-photo-b8c98.appspot.com/o/870017f3-0fd4-4033-a222-884a08e44eea.png?alt=media',
         'https://bulma.io/images/placeholders/1280x960.png',
         'https://bulma.io/images/placeholders/1280x960.png',
     ];
