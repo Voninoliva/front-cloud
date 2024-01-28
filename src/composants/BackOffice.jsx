@@ -15,13 +15,13 @@ import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
 import Dashboard from "./Dashboard.jsx";
 import './backoffice.css';
 function BackOffice({ ip }) {
-  useEffect(() => {
+  // useEffect(() => {
     const dashboardPanel = document.querySelector('.dashboard-panel');
     const closeMenu = document.querySelector('.close-menu');
     closeMenu.addEventListener('click', () => {
       dashboardPanel.classList.remove('is-active');
     });
-  });
+  // });
   return (
     <>
       <div className="dashboard is-full-height">
