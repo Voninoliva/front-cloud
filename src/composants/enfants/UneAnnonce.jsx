@@ -25,14 +25,14 @@ function UneAnnonce(props) {
         slidesToShow: 1,
         navigation: false,
     });
-    // // Eto le izy
-    // const displayedImages = [
-    //     'https://bulma.io/images/placeholders/1280x960.png',
-    //     'https://bulma.io/images/placeholders/1280x960.png',
-    //     'https://bulma.io/images/placeholders/1280x960.png',
-    // ];
+    // Eto le izy
+    const displayedImages = [
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+    ];
     // const displayedImages=voitures.photo.length>0 ?voitures.photo : displayedImages;
-    console.log(voitures.photo)
+    // console.log(voi)
     // const displayedImages = voitures.photo;
     return (
         <>
