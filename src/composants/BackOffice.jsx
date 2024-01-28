@@ -17,14 +17,13 @@ import './backoffice.css';
 function BackOffice({ ip }) {
   useEffect(() => {
     const dashboardPanel = document.querySelector('.dashboard-panel');
-    console.log(dashboardPanel + " tyyy ");
     const closeMenu = document.querySelector('.close-menu');
     closeMenu.addEventListener('click', () => {
       dashboardPanel.classList.remove('is-active');
     });
   });
   const burger = () => {
-
+    console.log("miditra");
   }
 
   return (
@@ -39,7 +38,7 @@ function BackOffice({ ip }) {
                   Admin
                 </h3>
               </div>
-              <div className="navbar-burger">
+              <div className="navbar-burger" onClick={burger}>
                 <span className="icon">
                   <i class="fa-solid fa-list fa-lg"></i>
                 </span>
