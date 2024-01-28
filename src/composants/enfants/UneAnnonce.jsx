@@ -26,7 +26,7 @@ function UneAnnonce(props) {
         navigation: false,
     });
     // Eto le izy
-    const defaultImages = [
+    const displayedImages = [
         'https://bulma.io/images/placeholders/1280x960.png',
         'https://bulma.io/images/placeholders/1280x960.png',
         'https://bulma.io/images/placeholders/1280x960.png',
