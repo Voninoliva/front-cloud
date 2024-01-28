@@ -20,11 +20,11 @@ function BackOffice({ ip }) {
     const dashboardPanel = document.querySelector('.dashboard-panel');
     const closeMenu = document.querySelector('.close-menu');
     closeMenu.addEventListener('click', () => {
-      dashboardPanel.classList.remove('is-active');
+      dashboardPanel.classList.toggle('is-active');
     });
     const burger = document.querySelector('.navbar-burger');
     burger.addEventListener('click', () => {
-      dashboardPanel.classList.add('is-active');
+      dashboardPanel.classList.toggle('is-active');
     });
   });
   return (
