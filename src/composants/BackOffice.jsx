@@ -20,9 +20,9 @@ function BackOffice({ ip }) {
   // closeMenu.addEventListener('click', () => {
   //   dashboardPanel.classList.remove('is-active');
   // });
-  const burger = () => {
-    
-  }
+  // const burger = () => {
+
+  // }
 
   return (
     <>
@@ -36,7 +36,7 @@ function BackOffice({ ip }) {
                   Admin
                 </h3>
               </div>
-              <div className="navbar-burger" onClick={burger}>
+              <div className="navbar-burger">
                 <span className="icon">
                   <i class="fa-solid fa-list fa-lg"></i>
                 </span>
