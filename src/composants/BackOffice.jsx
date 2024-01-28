@@ -18,10 +18,11 @@ import { useEffect } from 'react';
 function BackOffice({ ip }) {
   useEffect(() => {
     const dashboardPanel = document.querySelector('.dashboard-panel');
-    const closeMenu = document.querySelector('.close-menu');
-    closeMenu.addEventListener('click', () => {
-      dashboardPanel.classList.remove('is-active');
-    });
+    console.log(dashboardPanel);
+    // const closeMenu = document.querySelector('.close-menu');
+    // closeMenu.addEventListener('click', () => {
+      // dashboardPanel.classList.remove('is-active');
+    // });
   });
   return (
     <>
