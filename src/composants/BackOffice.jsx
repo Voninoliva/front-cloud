@@ -21,6 +21,7 @@ function BackOffice({ ip }) {
     const closeMenu = document.querySelector('.close-menu');
     closeMenu.addEventListener('click', () => {
       dashboardPanel.classList.toggle('is-active');
+      console.log("miditra");
     });
     const burger = document.querySelector('.navbar-burger');
     burger.addEventListener('click', () => {
