@@ -29,6 +29,7 @@ function BackOffice({ ip }) {
   }, []);
   return (
     <>
+      <div class="pageloader is-info"></div>
       <div className="dashboard is-full-height">
         <Menu></Menu>
         <div className="dashboard-main is-scrollable">
