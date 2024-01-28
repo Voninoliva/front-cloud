@@ -15,6 +15,14 @@ import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
 import Dashboard from "./Dashboard.jsx";
 import './backoffice.css';
 function BackOffice({ ip }) {
+  useEffect(() => {
+    const dashboardPanel = document.querySelector('.dashboard-panel');
+    console.log(dashboardPanel + " tyyy ");
+    const closeMenu = document.querySelector('.close-menu');
+    closeMenu.addEventListener('click', () => {
+      dashboardPanel.classList.remove('is-active');
+    });
+  });
   const burger = () => {
 
   }
