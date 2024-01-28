@@ -1,13 +1,16 @@
 import '@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css';
 import { bulmaCollapsible } from '@creativebulma/bulma-collapsible';
 import logo from '../assets/img/logo.png';
+import { useEffect } from 'react';
 export default function Menu() {
-    // const dashboardPanel = document.querySelector('.dashboard-panel');
-    // console.log(dashboardPanel + " tyyy ");
-    // const closeMenu = document.querySelector('.close-menu');
-    // closeMenu.addEventListener('click', () => {
-    //     dashboardPanel.classList.remove('is-active');
-    // });
+    useEffect(() => {
+        const dashboardPanel = document.querySelector('.dashboard-panel');
+        console.log(dashboardPanel + " tyyy ");
+        const closeMenu = document.querySelector('.close-menu');
+        closeMenu.addEventListener('click', () => {
+            dashboardPanel.classList.remove('is-active');
+        });
+    });
     // bulmaCollapsible.attach('.is-collapsible');
     // document.addEventListener('load', function () {
     //     bulmaCollapsible.attach('.is-collapsible');
