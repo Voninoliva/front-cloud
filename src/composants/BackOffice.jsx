@@ -22,10 +22,6 @@ function BackOffice({ ip }) {
       dashboardPanel.classList.remove('is-active');
     });
   });
-  const burger = () => {
-    console.log("miditra");
-  }
-
   return (
     <>
       <div className="dashboard is-full-height">
@@ -38,7 +34,7 @@ function BackOffice({ ip }) {
                   Admin
                 </h3>
               </div>
-              <div className="navbar-burger" onClick={burger}>
+              <div className="navbar-burger">
                 <span className="icon">
                   <i class="fa-solid fa-list fa-lg"></i>
                 </span>
