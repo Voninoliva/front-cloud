@@ -31,7 +31,7 @@ function UneAnnonce(props) {
         'https://bulma.io/images/placeholders/1280x960.png',
         'https://bulma.io/images/placeholders/1280x960.png',
     ];
-    console.log(voitures.photos);
+    console.log(voitures.photos + " tyyt");
     displayedImages=voitures.photos;
     return (
         <>
