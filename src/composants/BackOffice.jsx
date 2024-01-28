@@ -15,15 +15,15 @@ import DetailAnnonce from "./enfants/DetailAnnonce.jsx";
 import Dashboard from "./Dashboard.jsx";
 import './backoffice.css';
 function BackOffice({ ip }) {
-  const dashboardPanel = document.querySelector('.dashboard-panel');
-  console.log(dashboardPanel);
+  // const dashboardPanel = document.querySelector('.dashboard-panel');
+  // console.log(dashboardPanel);
   // const closeMenu = document.querySelector('.close-menu');
   // closeMenu.addEventListener('click', () => {
     // dashboardPanel.classList.remove('is-active');
   // });
-  const burger = () => {
+  // const burger = () => {
 
-  }
+  // }
 
   return (
     <>
