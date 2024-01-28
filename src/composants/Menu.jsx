@@ -3,7 +3,7 @@ import { bulmaCollapsible } from '@creativebulma/bulma-collapsible';
 import logo from '../assets/img/logo.png';
 export default function Menu() {
     const dashboardPanel = document.querySelector('.dashboard-panel');
-    console.log(dashboardPanel);
+    console.log(dashboardPanel + " tyyy ");
     const closeMenu = document.querySelector('.close-menu');
     closeMenu.addEventListener('click', () => {
         dashboardPanel.classList.remove('is-active');
