@@ -31,7 +31,8 @@ function UneAnnonce(props) {
         'https://bulma.io/images/placeholders/1280x960.png',
         'https://bulma.io/images/placeholders/1280x960.png',
     ];
-    displayedImages=voitures.photos.length>0 ?voitures.photos : defaultImages;
+    console.log(voitures.photos);
+    // displayedImages=voitures.photos.length>0 ?voitures.photos : defaultImages;
     return (
         <>
             <div className="tile is-parent is-4">
