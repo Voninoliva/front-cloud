@@ -22,6 +22,10 @@ function BackOffice({ ip }) {
     closeMenu.addEventListener('click', () => {
       dashboardPanel.classList.remove('is-active');
     });
+    const burger = document.querySelector('.navbar-burger');
+    burger.addEventListener('click', () => {
+      dashboardPanel.classList.add('is-active');
+    });
   });
   return (
     <>
