@@ -20,9 +20,9 @@ function BackOffice({ ip }) {
   // closeMenu.addEventListener('click', () => {
   //   dashboardPanel.classList.remove('is-active');
   // });
-  // const burger = () => {
-  //   dashboardPanel.classList.toggle('is-active');
-  // }
+  const burger = () => {
+    
+  }
 
   return (
     <>
