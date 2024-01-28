@@ -32,7 +32,7 @@ function UneAnnonce(props) {
         'https://bulma.io/images/placeholders/1280x960.png',
     ];
     console.log(voitures.photos);
-    // displayedImages=voitures.photos.length>0 ?voitures.photos : defaultImages;
+    displayedImages=voitures.photos;
     return (
         <>
             <div className="tile is-parent is-4">
