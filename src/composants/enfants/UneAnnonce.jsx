@@ -32,7 +32,8 @@ function UneAnnonce(props) {
     //     'https://bulma.io/images/placeholders/1280x960.png',
     // ];
     // const displayedImages=voitures.photo.length>0 ?voitures.photo : displayedImages;
-    const displayedImages = voitures.photo;
+    console.log(voitures.photo)
+    // const displayedImages = voitures.photo;
     return (
         <>
             <div className="tile is-parent is-4">
