@@ -32,7 +32,7 @@ function UneAnnonce(props) {
         console.log('tyyy');
         console.log(voitures.photos);
         console.log('tyyy');
-    })
+    }, []);
     // displayedImages=voitures.photos;
     return (
         <>

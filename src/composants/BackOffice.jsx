@@ -26,7 +26,7 @@ function BackOffice({ ip }) {
     burger.addEventListener('click', () => {
       dashboardPanel.classList.toggle('is-active');
     });
-  });
+  }, []);
   return (
     <>
       <div className="dashboard is-full-height">
