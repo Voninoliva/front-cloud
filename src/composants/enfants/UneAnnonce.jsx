@@ -2,8 +2,9 @@ import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
 import { useFetchData } from "../../api-integrations/getFromApi";
 import '../../assets/css/style.css';
 import 'bulma-list/css/bulma-list.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 function UneAnnonce(props) {
+    const [displayedImages, setImages] = useState<[]>(null);
     useEffect(() => {
         console.log(props.details);
         const apiv = `${props.ip}/voiture/${props.details.idvoiture}`;
@@ -28,10 +29,11 @@ function UneAnnonce(props) {
             navigation: false,
         });
         // Eto le izy
-        const displayedImages = [voitures.photos];
-        console.log('tyyy');
-        console.log(voitures.photos);
-        console.log('tyyy');
+        const images = [voitures.photos];
+        setImages(images);
+        // console.log('tyyy');
+        // console.log(voitures.photos);
+        // console.log('tyyy');
     }, []);
     // displayedImages=voitures.photos;
     return (
