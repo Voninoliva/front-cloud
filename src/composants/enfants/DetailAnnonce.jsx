@@ -86,7 +86,7 @@ function DetailAnnonce({ ip }) {
         }
       };
     return (
-        <>
+        <section className="section">
             <div className="columns">
                 <div className="column is-7">
                     <article className="media mb-6">
@@ -184,7 +184,7 @@ function DetailAnnonce({ ip }) {
                     </div>
                 </div>
             </div>
-        </>
+        </section>
     );
 }
 
