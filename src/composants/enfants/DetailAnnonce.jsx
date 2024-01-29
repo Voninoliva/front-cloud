@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import { useParams } from "react-router-dom";
 import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
 import OptionKely from "./OptionsKely";
 import { useUpdateDataToken } from "../../api-integrations/getFromApi";
 
 function DetailAnnonce({ ip }) {
-    bulmaCarousel.attach('.carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 2.15,
-        pagination: false,
-        infinite: true,
-        autoplay: true
-    });
-
+    const displayedImages = [
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png',
+        'https://bulma.io/images/placeholders/1280x960.png'
+    ];
+    const carouselRef = useRef(null);
+    const [imagesDAnnonce, setImageDAnnonce] = useState(displayedImages);
     const { idannonce } = useParams();
     const apivoiture = `${ip}/annonce/${idannonce}`;
-    const [prix,setPrix] = useState(0);
+    const [prix, setPrix] = useState(0);
     const [annonces, setAnnonces] = useState(null);
     const [descri, setDescri] = useState(null);
     const [voiture, setVoiture] = useState(null);
     const [modele, setModele] = useState('');
-    const [sary,setSary] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -33,15 +33,25 @@ function DetailAnnonce({ ip }) {
                     const apiVoiture = `${ip}/voiture/${annoncesData.idvoiture}`;
                     const responseVoiture = await fetch(apiVoiture);
                     const voitureData = await responseVoiture.json();
-                    setSary(voitureData.photo);
+
                     setVoiture(voitureData);
-                    if(voitureData){
+                    if (voitureData) {
+                        setImageDAnnonce(voitureData.photos);
+                        if (carouselRef.current) {
+                            bulmaCarousel.attach(carouselRef.current, {
+                                slidesToScroll: 1,
+                                slidesToShow: 2.15,
+                                pagination: false,
+                                infinite: true,
+                                autoplay: true
+                            });
+                        }
                         const v = await fetch(`${ip}/modele/${voitureData.idmodele}`);
                         const modelee = await v.json();
                         const modeleConcatene = `${modelee.nommodele} de ${modelee.marque.nommarque}`;
                         setModele(modeleConcatene);
                     }
-                    
+
                 }
             } catch (error) {
                 console.error("Une erreur s'est produite :", error);
@@ -49,8 +59,8 @@ function DetailAnnonce({ ip }) {
         };
 
         fetchData();
-    }, [apivoiture, ip]);
-     
+    }, [apivoiture, ip, voiture]);
+
     const options = voiture ? <OptionKely ip={ip} voiture={voiture} /> : null;
     const droites = voiture ? (
         <>
@@ -63,28 +73,28 @@ function DetailAnnonce({ ip }) {
     const submitData = useUpdateDataToken();
     const confirmer = async (e) => {
         try {
-          e.preventDefault();
-          const objetAEnvoyer = {
-             'etat': 1,
-             'idannonce':idannonce
+            e.preventDefault();
+            const objetAEnvoyer = {
+                'etat': 1,
+                'idannonce': idannonce
             };
-          const responseData = await submitData(lien, objetAEnvoyer,localStorage.getItem('token'));
+            const responseData = await submitData(lien, objetAEnvoyer, localStorage.getItem('token'));
         } catch (error) {
         }
-      };
-      const supprimer = async (e) => {
+    };
+    const supprimer = async (e) => {
         try {
-          e.preventDefault();
-          const objetAEnvoyer = {
-             'etat': 2,
-             'idannonce':idannonce
+            e.preventDefault();
+            const objetAEnvoyer = {
+                'etat': 2,
+                'idannonce': idannonce
             };
-          // Envoyer les données à l'API
-         
-          const responseData = await submitData(lien, objetAEnvoyer,localStorage.getItem('token'));
+            // Envoyer les données à l'API
+
+            const responseData = await submitData(lien, objetAEnvoyer, localStorage.getItem('token'));
         } catch (error) {
         }
-      };
+    };
     return (
         <>
             <div className="columns">
@@ -124,7 +134,7 @@ function DetailAnnonce({ ip }) {
                             </article>
                             <blockquote>
                                 <h3>
-                                   MGA {prix.toLocaleString('fr-FR')}
+                                    MGA {prix.toLocaleString('fr-FR')}
                                 </h3>
                             </blockquote>
 
@@ -140,48 +150,15 @@ function DetailAnnonce({ ip }) {
                     </div>
                 </div>
                 <div className="tile is-6 carousel has-ribbon-top" style={{ overflowX: "hidden" }}>
-                    <div className="tile is-parent">
-                        <div className="tile is-child item-1">
-                            <figure className="image is-3by5">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                            </figure>
+                    {imagesDAnnonce.map((image, index) => (
+                        <div key={index} className={`tile is-parent`}>
+                            <div className={`tile is-child item-${index + 1}`}>
+                                <figure className="image is-3by5">
+                                    <img src={image} alt={`Placeholder image ${index + 1}`} />
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                    <div className="tile is-parent">
-                        <div className="tile is-child item-2">
-                            <figure className="image is-3by5">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                            </figure>
-                        </div>
-                    </div>
-                    <div className="tile is-parent">
-                        <div className="tile is-child item-3">
-                            <figure className="image is-3by5">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                            </figure>
-                        </div>
-                    </div>
-                    <div className="tile is-parent">
-                        <div className="tile is-child item-4">
-                            <figure className="image is-3by5">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                            </figure>
-                        </div>
-                    </div>
-                    <div className="tile is-parent">
-                        <div className="tile is-child item-5">
-                            <figure className="image is-3by5">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                            </figure>
-                        </div>
-                    </div>
-                    <div className="tile is-parent">
-                        <div className="tile is-child item-6">
-                            <figure className="image is-3by5">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
-                            </figure>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </>

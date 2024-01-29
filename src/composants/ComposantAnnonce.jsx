@@ -3,9 +3,7 @@ import 'bulma-carousel/dist/css/bulma-carousel.min.css';
 import UneAnnonce from "./enfants/UneAnnonce";
 function ComposantAnnonce({ ip }) {
     const apiUrl = `${ip}/annonce/unvalid`;
-    console.log(apiUrl);
     const donnees = useFetchDataToken(apiUrl,localStorage.getItem('token'));
-    console.log(donnees);
     const renderDetails = () => {
         return donnees.map((detail, index) => (
             <UneAnnonce key={index} details={detail} ip={ip}/>

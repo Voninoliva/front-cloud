@@ -29,7 +29,7 @@ function BackOffice({ ip }) {
   }, []);
   return (
     <>
-      <div class="pageloader is-info"></div>
+      <div className="pageloader is-info"></div>
       <div className="dashboard is-full-height">
         <Menu></Menu>
         <div className="dashboard-main is-scrollable">
@@ -42,7 +42,7 @@ function BackOffice({ ip }) {
               </div>
               <div className="navbar-burger">
                 <span className="icon">
-                  <i class="fa-solid fa-list fa-lg"></i>
+                  <i className="fa-solid fa-list fa-lg"></i>
                 </span>
               </div>
             </div>
